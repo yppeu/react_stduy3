@@ -14,8 +14,12 @@
   width: 30% !important;
 }
 
-h4,p{
-  display: flex;
+img{
+  width: 100% !important;
+}
+
+.main-bg{
+  background-image: "url(" + imgurl + ")";
 }
 
 .App {
