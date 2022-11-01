@@ -8,22 +8,25 @@ import data from "./data.js";
 
 function App() {
   let [shoes] = useState(data);
+  let navigate = useNavigate();
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">Navbar</Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="/">홈</Link>
-            <Link to="/detail">상세페이지</Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link onClick={()=>{
+              navigate('/')
+            }}>Home</Nav.Link>
+            <Nav.Link onClick={()=>{
+              navigate('/detail')
+            }}>Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       <Routes>
-        <Route
-          path="/"
+        <Route path="/"
           element={
             <>
               <div className="main-bg"></div>
@@ -36,10 +39,25 @@ function App() {
           }
         />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/about" element={<div>어바웃페이지</div>} />
+
+        <Route path="/event" element={<Event />} >
+          <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>} />
+          <Route path="two" element={<p>생일기념 쿠폰받기</p>} />
+        </Route>
+
+        <Route path="*" element={<div>없는 페이지</div>} />
       </Routes>
     </div>
   );
+}
+
+function Event(){
+  return(
+    <div>
+      <h4>오늘의 이벤트</h4>
+      <Outlet></Outlet>
+    </div>
+  )
 }
 
 function Card(props) {
