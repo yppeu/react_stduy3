@@ -38,7 +38,7 @@ function App() {
             </>
           }
         />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
 
         <Route path="/event" element={<Event />} >
           <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>} />
@@ -62,6 +62,7 @@ function Event(){
 
 function Card(props) {
   return (
+    <>
     <div class="img-warp">
       <img
         src={
@@ -71,6 +72,7 @@ function Card(props) {
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.price}</p>
     </div>
+    </>
   );
 }
 
